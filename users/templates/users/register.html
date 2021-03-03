@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <h1 class="text-white">Création de votre compte</h1>
+                <hr class="divider my-4" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="page-section">
+    <div class="container">
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Rejoignez-nous !</legend>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            {{ form.password1|as_crispy_field }}
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            {{ form.password2|as_crispy_field }}
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-primary js-scroll-trigger" type="submit">Créer un compte</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Déjà un compte ? <a class="ml-2" href="{% url 'login' %}">Connexion</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

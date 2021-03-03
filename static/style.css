@@ -1,0 +1,75 @@
+input {
+    text-align: center;
+    height: 38px;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    text-align: center;
+  }
+
+  #off-btn {
+    margin-top: 75px;
+  }
+
+.card {
+  position: relative;
+  }
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+.nutriscore-A {
+  background: #0d8443;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.nutriscore-B {
+  background: #85bc31;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.nutriscore-C {
+  background: #f8c530;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.nutriscore-D {
+  background: #d47f30;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.nutriscore-E {
+  background: #e43c15;
+  color: #fff;
+  padding: 5px 13px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <h1 class="text-white">Bienvenue {{ user.username }} !</h1>
+                <hr class="divider my-4" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="page-section">
+    <div class="container">
+        <div class="content-section">
+            <legend class="border-bottom mb-4">Votre compte :</legend>
+            <p class="text-center">{{ user.email }}</p>
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}
