@@ -37,6 +37,11 @@ urlpatterns = [
         name="save_as_favoris",
     ),
     path(
+        "delete_favoris/<int:favorite_id>/",
+        views.delete_favoris,
+        name="delete_favoris",
+    ),
+    path(
         "favorites/",
         views.favorites,
         name="favorites",

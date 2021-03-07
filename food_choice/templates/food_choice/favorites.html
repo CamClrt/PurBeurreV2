@@ -49,6 +49,10 @@
                             {% else %}
                             <h6 class="card-title">Nom: non renseigné</h6>
                             {% endif %}
+                            <a class="btn btn-primary js-scroll-trigger"
+                                href="{% url 'food_choice:delete_favoris' favorite.id %}">
+                                <img src="{% static 'src/assets/img/delete.png' %}" alt="Supprimer">
+                                Supprimer</a>
                         </div>
                         <div class="card-footer font-italic text-muted"><a
                                 href="{% url 'food_choice:product' favorite.product.id %}" target="_blank">

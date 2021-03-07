@@ -137,6 +137,22 @@ def save_as_favoris(request, product_id, substitute_id):
 
 
 @login_required
+def delete_favoris(request, favorite_id):
+    """delete a favorite product user, if he's logged in"""
+    favoris = Favoris.objects.get(pk=favorite_id)
+
+    try:
+        favoris.delete()
+        return redirect("food_choice:favorites")
+    except IntegrityError:
+        messages.error(
+            request,
+            f"Erreur: {favoris.name} n'a pas pu être supprimé",
+        )
+        return redirect("food_choice:home")
+
+
+@login_required
 def favorites(request):
     """display the user's favorite products, if he's logged in"""
     favorites = Favoris.objects.filter(owner_id=request.user.id)

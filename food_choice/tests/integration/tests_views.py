@@ -58,7 +58,7 @@ class TestSubstitutesView(TestCase):
         self.assertTemplateUsed(response, "food_choice/substitutes.html")
 
 
-class TestSaveAsfavorisView(TestCase):
+class TestSaveAsFavorisView(TestCase):
     def setUp(self):
         self.client = Client()
         self.product = Product.objects.create(
@@ -77,6 +77,34 @@ class TestSaveAsfavorisView(TestCase):
     def test_save_as_favorite_ok(self):
         url = reverse(
             "food_choice:save_as_favoris",
+            args=(
+                self.product.id,
+                self.substitute.id,
+            ),
+        )
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+
+class TestDeleteFavorisView(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.product = Product.objects.create(
+            name="Nutella",
+            code="1234567890123",
+            brand="Ferrero",
+            nutrition_grade="e",
+        )
+        self.substitute = Product.objects.create(
+            name="Pâte à tartiner allégée",
+            code="6789012345678",
+            brand="mamie Bio",
+            nutrition_grade="a",
+        )
+
+    def test_save_as_favorite_ok(self):
+        url = reverse(
+            "food_choice:delete_favoris",
             args=(
                 self.product.id,
                 self.substitute.id,
