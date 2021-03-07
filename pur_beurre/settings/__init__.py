@@ -12,14 +12,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
+from dotenv import load_dotenv
+
+# Init dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))
-)  # noqa: E501
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # noqa: E501
 
 
 # Quick-start development settings - unsuitable for production
@@ -148,9 +148,3 @@ LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "login"
 
 AUTH_USER_MODEL = "users.User"
-
-sentry_sdk.init(
-    dsn="https://0ec3defb03bf48b39307777c7a4e3347@o484599.ingest.sentry.io/5588174",  # noqa: E501
-    integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,
-)
