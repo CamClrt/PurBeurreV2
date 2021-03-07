@@ -5,5 +5,5 @@ from food_choice.forms import NavResearchForm
 
 def search_in_navbar(request):
     return {
-        "nav_form": NavSearchForm(),
+        "nav_form": NavResearchForm(),
     }
