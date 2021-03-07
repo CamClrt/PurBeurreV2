@@ -139,7 +139,7 @@ def save_as_favoris(request, product_id, substitute_id):
 @login_required
 def favorites(request):
     """display the user's favorite products, if he's logged in"""
-    favorites = Favoris.objects.all()
+    favorites = Favoris.objects.filter(owner_id=request.user.id)
 
     context = {
         "title": "Mes produits favoris",
