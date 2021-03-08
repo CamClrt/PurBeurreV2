@@ -31,17 +31,7 @@
                     <div class="card mx-1 my-3 shadow p-3 mb-5 bg-white rounded">
                         <img class="card-img-top" src="{{ product.photo_url }}" alt="Image du produit">
 
-                        {% if product.nutrition_grade == "A" %}
-                        <span class="nutriscore-A">A</span>
-                        {% elif product.nutrition_grade == "B" %}
-                        <span class="nutriscore-B">B</span>
-                        {% elif product.nutrition_grade == "C" %}
-                        <span class="nutriscore-C">C</span>
-                        {% elif product.nutrition_grade == "D" %}
-                        <span class="nutriscore-D">D</span>
-                        {% elif product.nutrition_grade == "E" %}
-                        <span class="nutriscore-E">E</span>
-                        {% endif %}
+                        <span class="nutriscore-{{product.nutrition_grade}}">{{product.nutrition_grade}}</span>
 
                         <div class="card-body text-center">
                             {% if product.name %}
