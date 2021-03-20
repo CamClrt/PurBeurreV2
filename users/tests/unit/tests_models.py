@@ -1,6 +1,6 @@
 from django.test import RequestFactory, TestCase
 
-from users.models import User
+from users.models import User, Profile, Diet
 
 
 class TestModels(TestCase):
@@ -18,6 +18,9 @@ class TestModels(TestCase):
             password="1234AZERTY",
         )
 
+        self.diet = Diet.objects.create(diet=Diet.OMNIVOR_DIET)
+        self.profile = Profile.objects.create(user=self.user, diet=self.diet)
+
     def test_user_str(self):
         self.assertEqual(str(self.user), "inconnu@email.com")
 
@@ -32,3 +35,9 @@ class TestModels(TestCase):
 
     def test_superuser_is_admin_str(self):
         self.assertIs(self.superuser.is_admin, True)
+
+    def test_diet_str(self):
+        self.assertEqual(str(self.diet), "1: omnivore")
+
+    def test_profile_str(self):
+        self.assertEqual(str(self.profile), "inconnu Profile")

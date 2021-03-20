@@ -2,7 +2,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.test import Client, RequestFactory, TestCase
 from django.urls import reverse
 
-from users.models import User
+from users.models import User, Profile, Diet
 from users.views import profile
 
 
@@ -50,6 +50,8 @@ class TestProfileView(TestCase):
             email="inconnu@gmail.com",
             password="1234AZERTY",
         )
+        self.diet = Diet.objects.create(diet=Diet.OMNIVOR_DIET)
+        self.profile = Profile.objects.create(user=self.user, diet=self.diet)
 
     def test_display_profile_ok(self):
         request = self.factory.get(reverse("profile"))
@@ -59,6 +61,18 @@ class TestProfileView(TestCase):
 
     def test_display_profile_not_ok(self):
         request = self.factory.get(reverse("profile"))
+        request.user = AnonymousUser()
+        response = profile(request)
+        self.assertEqual(response.status_code, 302)
+
+    def test_display_update_profile_ok(self):
+        request = self.factory.get(reverse("update_profile"))
+        request.user = self.user
+        response = profile(request)
+        self.assertEqual(response.status_code, 200)
+
+    def test_display_update_profile_not_ok(self):
+        request = self.factory.get(reverse("update_profile"))
         request.user = AnonymousUser()
         response = profile(request)
         self.assertEqual(response.status_code, 302)

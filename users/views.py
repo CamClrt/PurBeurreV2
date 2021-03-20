@@ -2,9 +2,11 @@
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models.query import InstanceCheckMeta
 from django.shortcuts import redirect, render
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, DietForm
+from .models import Profile, User, Diet
 
 
 def register(request):
@@ -18,6 +20,10 @@ def register(request):
                 request,
                 f"{username}: compte créé, vous pouvez vous connecter !",
             )
+            email = form.cleaned_data.get("email")
+            user = User.objects.get(email=email)
+            diet = Diet.objects.get(diet=1)
+            Profile.objects.create(user=user, diet=diet)
             return redirect("login")
     else:
         form = UserRegisterForm()
@@ -25,6 +31,45 @@ def register(request):
 
 
 @login_required
+def update_profile(request):
+    """Update the profil page when user is logged in"""
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=user)
+        p_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=profile,
+        )
+        d_form = DietForm(request.POST)
+        if u_form.is_valid() and p_form.is_valid() and d_form.is_valid:
+            u_form.save()
+            p_form.save()
+            print("diet:", d_form)
+            diet_data = d_form.cleaned_data.get("diet")
+            diet = Diet.objects.get(diet=diet_data)
+            profile.diet = diet
+            profile.save()
+            return redirect("profile")
+    else:
+        u_form = UserUpdateForm(instance=user)
+        p_form = ProfileUpdateForm(instance=profile)
+        d_form = DietForm()
+
+    context = {
+        "u_form": u_form,
+        "p_form": p_form,
+        "d_form": d_form,
+        "profile": profile,
+    }
+
+    return render(request, "users/update_profile.html", context)
+
+
+@login_required
 def profile(request):
-    """Display a profil page when user is logged in"""
-    return render(request, "users/profile.html")
+    """Display the profil page when user is logged in"""
+    profile = Profile.objects.get(user=request.user)
+    context = {"profile": profile}
+    return render(request, "users/profile.html", context)

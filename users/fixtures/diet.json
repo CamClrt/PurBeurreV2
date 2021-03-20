@@ -1,0 +1,37 @@
+[
+{
+    "model": "users.diet",
+    "pk": 5,
+    "fields": {
+        "diet": 5
+    }
+},
+{
+    "model": "users.diet",
+    "pk": 4,
+    "fields": {
+        "diet": 4
+    }
+},
+{
+    "model": "users.diet",
+    "pk": 3,
+    "fields": {
+        "diet": 3
+    }
+},
+{
+    "model": "users.diet",
+    "pk": 2,
+    "fields": {
+        "diet": 2
+    }
+},
+{
+    "model": "users.diet",
+    "pk": 1,
+    "fields": {
+        "diet": 1
+    }
+}
+]

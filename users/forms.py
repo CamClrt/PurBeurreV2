@@ -3,7 +3,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from users.models import User
+from users.models import Profile, User, Diet
 
 
 class UserRegisterForm(UserCreationForm):
@@ -48,3 +48,32 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    username = forms.CharField(label="Nom de l'utilisateur")
+
+    class Meta:
+        model = User
+        fields = ["username", "email"]
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["image"]
+
+
+class DietForm(forms.Form):
+    DIET_CHOICES = [
+        (1, "omnivore"),
+        (2, "flexitarien"),
+        (3, "végétarien"),
+        (4, "végétalien"),
+        (5, "crudivor"),
+    ]
+    diet = forms.ChoiceField(
+        label="Régime alimentaire",
+        choices=DIET_CHOICES,
+    )

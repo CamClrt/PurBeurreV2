@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from PIL import Image
 
 
 class UserManager(BaseUserManager):
@@ -68,3 +69,46 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+class Diet(models.Model):
+    OMNIVOR_DIET = 1
+    FLEXITARIEN_DIET = 2
+    VEGETARIEN_DIET = 3
+    VEGETALIEN_DIET = 4
+    CRUDIVOR_DIET = 5
+    DIET_CHOICES = [
+        (OMNIVOR_DIET, "omnivore"),
+        (FLEXITARIEN_DIET, "flexitarien"),
+        (VEGETARIEN_DIET, "végétarien"),
+        (VEGETALIEN_DIET, "végétalien"),
+        (CRUDIVOR_DIET, "crudivor"),
+    ]
+
+    diet = models.IntegerField(choices=DIET_CHOICES)
+
+    def __str__(self):
+        return f"{self.diet}: {self.get_diet_display()}"
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="user_profile"
+    )
+    diet = models.OneToOneField(
+        Diet, on_delete=models.CASCADE, related_name="diet_profile"
+    )
+    image = models.ImageField(default="default.jpg", upload_to="profile_pics")
+
+    def __str__(self):
+        return f"{self.user.username} Profile"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 150 or img.width > 150:
+            output_size = (150, 150)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

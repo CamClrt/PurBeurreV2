@@ -3,6 +3,11 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 
 
 class AuthenticationTests(StaticLiveServerTestCase):
+    fixtures = ["diet.json"]
+    # https://docs.djangoproject.com/fr/3.1/topics/settings/
+    # https://docs.djangoproject.com/fr/3.1/ref/django-admin/#django-admin-dumpdata
+    # https://docs.djangoproject.com/fr/3.1/topics/testing/tools/
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

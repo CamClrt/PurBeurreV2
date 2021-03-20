@@ -1,12 +1,13 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from users.models import User
+from users.models import User, Profile, Diet
 
 
 class TestRegisterView(TestCase):
     def setUp(self):
         self.client = Client()
+        self.diet = Diet.objects.create(diet=Diet.OMNIVOR_DIET)
 
     def test_registration_ok(self):
         data = {
@@ -29,6 +30,9 @@ class TestProfileView(TestCase):
             email="inconnu@gmail.com",
             password="1234AZERTY",
         )
+        self.diet = Diet.objects.create(diet=Diet.OMNIVOR_DIET)
+        self.profile = Profile.objects.create(user=self.user, diet=self.diet)
+
         self.client.login(
             email="inconnu@gmail.com",
             password="1234AZERTY",
