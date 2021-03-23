@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from food_choice.models import Product
+from food_choice.models import Product, Favoris
 from users.models import User
 
 
@@ -101,14 +101,19 @@ class TestDeleteFavorisView(TestCase):
             brand="mamie Bio",
             nutrition_grade="a",
         )
-
-    def test_save_as_favorite_ok(self):
-        url = reverse(
-            "food_choice:delete_favoris",
-            args=(
-                self.product.id,
-                self.substitute.id,
-            ),
+        self.user = User.objects.create_user(
+            username="inconnu",
+            email="inconnu@gmail.com",
+            password="1234AZERTY",
         )
+
+        self.favoris = Favoris(
+            product=self.product,
+            substitute=self.substitute,
+            owner=self.user,
+        )
+
+    def test_delete_favorite_ok(self):
+        url = reverse("food_choice:delete_favoris", args="1")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
