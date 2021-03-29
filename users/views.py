@@ -2,11 +2,16 @@
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models.query import InstanceCheckMeta
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.shortcuts import render
 
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, DietForm
-from .models import Profile, User, Diet
+from .forms import DietForm
+from .forms import ProfileUpdateForm
+from .forms import UserRegisterForm
+from .forms import UserUpdateForm
+from .models import Diet
+from .models import Profile
+from .models import User
 
 
 def register(request):

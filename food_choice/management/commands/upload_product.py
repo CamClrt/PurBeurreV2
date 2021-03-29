@@ -5,7 +5,8 @@ from django.db import IntegrityError
 from progress.bar import Bar
 
 from food_choice.api import API
-from food_choice.models import Category, Product
+from food_choice.models import Category
+from food_choice.models import Product
 
 
 class Command(BaseCommand):

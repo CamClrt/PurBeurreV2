@@ -1,7 +1,9 @@
-from django.test import Client, TestCase
+from django.test import Client
+from django.test import TestCase
 from django.urls import reverse
 
-from food_choice.models import Product, Favoris
+from food_choice.models import Favoris
+from food_choice.models import Product
 from users.models import User
 
 

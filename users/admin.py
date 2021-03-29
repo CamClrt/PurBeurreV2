@@ -6,7 +6,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin  # noqa: F401
 from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
 
-from users.models import User, Profile
+from users.models import Profile
+from users.models import User
 
 
 class UserCreationForm(forms.ModelForm):

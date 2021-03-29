@@ -1,7 +1,9 @@
 from django.db import IntegrityError
 from django.test import TestCase
 
-from food_choice.models import Category, Favoris, Product
+from food_choice.models import Category
+from food_choice.models import Favoris
+from food_choice.models import Product
 from users.models import User
 
 

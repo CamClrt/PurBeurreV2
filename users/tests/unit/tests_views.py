@@ -1,8 +1,12 @@
 from django.contrib.auth.models import AnonymousUser
-from django.test import Client, RequestFactory, TestCase
+from django.test import Client
+from django.test import RequestFactory
+from django.test import TestCase
 from django.urls import reverse
 
-from users.models import User, Profile, Diet
+from users.models import Diet
+from users.models import Profile
+from users.models import User
 from users.views import profile
 
 

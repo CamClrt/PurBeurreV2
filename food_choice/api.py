@@ -1,11 +1,12 @@
 """Manage all operations with the OpenFoodFacts API"""
 
-import re
 from datetime import datetime
+import re
 
-import requests
-from colorama import Fore, Style
+from colorama import Fore
+from colorama import Style
 from progress.bar import Bar
+import requests
 
 
 class API:

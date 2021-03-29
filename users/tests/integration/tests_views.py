@@ -1,7 +1,10 @@
-from django.test import Client, TestCase
+from django.test import Client
+from django.test import TestCase
 from django.urls import reverse
 
-from users.models import User, Profile, Diet
+from users.models import Diet
+from users.models import Profile
+from users.models import User
 
 
 class TestRegisterView(TestCase):

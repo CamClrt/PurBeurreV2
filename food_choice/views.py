@@ -6,12 +6,16 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.db.models import Count
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.shortcuts import render
 
 from users.models import User
 
 from .forms import HomeResearchForm
-from .models import Category, Favoris, Product
+from .models import Category
+from .models import Favoris
+from .models import Product
+
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)

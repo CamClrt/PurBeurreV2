@@ -4,6 +4,7 @@ from django.test import TestCase
 
 from food_choice.api import API
 
+
 categories_res = {
     "tags": [
         {"name": "Aliments et boissons à base de végétaux"},

@@ -1,6 +1,9 @@
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory
+from django.test import TestCase
 
-from users.models import User, Profile, Diet
+from users.models import Diet
+from users.models import Profile
+from users.models import User
 
 
 class TestModels(TestCase):

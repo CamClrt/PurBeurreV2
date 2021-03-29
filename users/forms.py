@@ -1,9 +1,10 @@
 """Customize the forms of the application."""
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm
 
-from users.models import Profile, User
+from users.models import Profile
+from users.models import User
 
 
 class UserRegisterForm(UserCreationForm):
