@@ -46,7 +46,6 @@ def update_profile(request):
         if u_form.is_valid() and p_form.is_valid() and d_form.is_valid:
             u_form.save()
             p_form.save()
-            print("diet:", d_form)
             diet_data = d_form.cleaned_data.get("diet")
             diet = Diet.objects.get(diet=diet_data)
             profile.diet = diet

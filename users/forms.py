@@ -1,9 +1,9 @@
 """Customize the forms of the application."""
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 
-from users.models import Profile, User, Diet
+from users.models import Profile, User
 
 
 class UserRegisterForm(UserCreationForm):
@@ -36,7 +36,7 @@ class UserRegisterForm(UserCreationForm):
     )
 
     password2 = forms.CharField(
-        label="Confirmation de votre de passe",
+        label="Confirmation de votre mot de passe",
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Confirmation",
