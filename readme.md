@@ -5,8 +5,8 @@ This is a student project made for the project 11 from [OpenClassrooms](https://
 
 ## Made with
 
-* Python 3.8
-* Django 3.1.2
+* Python 3.9
+* Django 3.1.7
 * PostgreSQL
 * Bootstrap4 + [Bootstrap Creative](https://startbootstrap.com/theme/creative)
 * [OpenFoodfacts API](https://fr.openfoodfacts.org/)
