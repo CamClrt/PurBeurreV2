@@ -3,6 +3,27 @@ Maintain and add features to a Django project
 
 This is a student project made for the project 11 from [OpenClassrooms](https://openclassrooms.com/)'s Python course.
 
+## Run Tox
+
+Launch project in a development environment
+```tox -e py39```
+
+Launch migrations
+```tox -e db```
+
+Launch migrations and custom commands
+```tox -e start```
+
+Launch tests
+```tox -e test```
+
+Launch coverage and build the HTML report
+```tox -e coverage```
+
+Check PEP8
+```tox -e pep8```
+
+
 ## Made with
 
 * Python 3.9
