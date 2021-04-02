@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 from users.models import User
+from food_choice.managers import ProductManager
 
 
 class Category(models.Model):
@@ -33,6 +34,8 @@ class Product(models.Model):
     fiber = models.IntegerField(default=0)
     salt = models.IntegerField(default=0)
     categories = models.ManyToManyField(Category, related_name="product")
+
+    objects = ProductManager()
 
     def __str__(self):
         return f"{self.name}, {self.code}, {self.nutrition_grade}"

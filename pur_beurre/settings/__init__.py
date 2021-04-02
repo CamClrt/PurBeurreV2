@@ -43,9 +43,10 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "fixture_magic",
     "food_choice.apps.FoodChoiceConfig",
     "users.apps.UsersConfig",
+    "autocomplete.apps.AutocompleteConfig",
+    "fixture_magic",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -140,12 +141,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 

@@ -13,7 +13,7 @@ class NavResearchForm(forms.Form):
                 "type": "text",
                 "name": "nav_search",
                 "id": "nav_search",
-                "class": "rounded",
+                "class": "rounded autocomplete_search",
                 "size": "25",
             }
         ),
@@ -30,7 +30,7 @@ class HomeResearchForm(forms.Form):
                 "type": "text",
                 "name": "home_search",
                 "id": "home_search",
-                "class": "rounded",
+                "class": "rounded autocomplete_search",
                 "size": "30",
                 "autofocus": "autofocus",
             }

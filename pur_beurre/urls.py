@@ -25,12 +25,19 @@ from users import views as user_views
 
 urlpatterns = [
     path(
-        "",
-        include("food_choice.urls"),
-    ),
-    path(
         "admin/",
         admin.site.urls,
+    ),
+    path(
+        "",
+        include("food_choice.urls", namespace="food_choice"),
+    ),
+    path(
+        "autocomplete/",
+        include(
+            "autocomplete.urls",
+            namespace="autocomplete",
+        ),
     ),
     path(
         "register/",

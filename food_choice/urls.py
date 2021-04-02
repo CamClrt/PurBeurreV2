@@ -6,6 +6,7 @@ from . import views
 
 
 app_name = "food_choice"
+
 urlpatterns = [
     path(
         "",
