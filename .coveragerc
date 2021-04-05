@@ -1,6 +1,9 @@
 [run]
 omit =
     omit =
+        *tox*
+        *travis*
+        *setup*
         */env/*
         */migrations/*
         */tests/*
