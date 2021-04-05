@@ -3,8 +3,8 @@
 from django.db import models
 from django.utils import timezone
 
-from users.models import User
 from food_choice.managers import ProductManager
+from users.models import User
 
 
 class Category(models.Model):
