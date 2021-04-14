@@ -91,6 +91,10 @@ class Command(BaseCommand):
                             except IntegrityError:
                                 category_obj = Category.objects.get(name=category_name)
 
+                            # associate product & category
+                            product_obj.categories.add(category_obj)
+                            product_obj.save()
+
                 except IntegrityError:
                     continue
 
