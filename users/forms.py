@@ -3,6 +3,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
+from users.models import Diet
 from users.models import Profile
 from users.models import User
 
@@ -78,3 +79,7 @@ class DietForm(forms.Form):
         label="Régime alimentaire",
         choices=DIET_CHOICES,
     )
+
+    class Meta:
+        model = Diet
+        fields = ["diet"]
