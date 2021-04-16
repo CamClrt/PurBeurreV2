@@ -131,6 +131,10 @@ def save_as_favoris(request, product_id, substitute_id):
 
     try:
         favoris.save()
+        messages.success(
+            request,
+            f"{substitute.name} a bien été ajouté à vos favoris"
+        )
         return redirect("food_choice:favorites")
     except IntegrityError:
         messages.error(
@@ -147,6 +151,10 @@ def delete_favoris(request, favorite_id):
 
     try:
         favoris.delete()
+        messages.success(
+            request,
+            f"{substitute.name} a bien été retiré de vos favoris"
+        )
         return redirect("food_choice:favorites")
     except IntegrityError:
         messages.error(
